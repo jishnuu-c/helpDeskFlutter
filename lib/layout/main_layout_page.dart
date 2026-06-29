@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:help_desk_flutter/auth/pages/dashboard/dashboard_page.dart';
-import 'package:help_desk_flutter/auth/pages/kb/kb_page.dart';
-import 'package:help_desk_flutter/auth/pages/login_page.dart';
-import 'package:help_desk_flutter/auth/pages/sla/sla_list_page.dart';
-import 'package:help_desk_flutter/core/storage/token_storage.dart';
+import '../features/dashboard/pages/dashboard_page.dart';
+import '../features/kb/pages/kb_page.dart';
+import '../features/auth/pages/login_page.dart';
+import '../features/sla/pages/sla_list_page.dart';
+import '../core/storage/token_storage.dart';
 
-import '../auth/pages/category/category_list_page.dart';
-import '../auth/pages/department/department_list_page.dart';
-import '../auth/pages/tickets/ticket_list_page.dart';
+import '../features/categories/pages/category_list_page.dart';
+import '../features/departments/pages/department_list_page.dart';
+import '../features/tickets/pages/ticket_list_page.dart';
 
 class MainLayoutPage extends StatefulWidget {
   const MainLayoutPage({super.key});
