@@ -11,23 +11,12 @@ class Department {
     required this.isActive,
   });
 
-  factory Department.fromJson(
-    Map<String, dynamic> json,
-  ) {
+  factory Department.fromJson(Map<String, dynamic> json) {
     return Department(
-      departmentId:
-          json['departmentId'] ??
-          json['id'] ??
-          0,
-
-      name:
-          json['name'] ?? '',
-
-      description:
-          json['description'] ?? '',
-
-      isActive:
-          json['isActive'] ?? true,
+      departmentId: json['departmentId'] ?? json['id'] ?? 0,
+      name: json['name'] ?? '',
+      description: json['description'] ?? '',
+      isActive: json['isActive'] ?? true,
     );
   }
 }

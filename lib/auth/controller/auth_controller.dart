@@ -6,75 +6,52 @@ import '../models/register_request.dart';
 import '../repository/auth_repository.dart';
 
 class AuthController extends ChangeNotifier {
-
-  final AuthRepository _repository =
-      AuthRepository();
+  final AuthRepository _repository = AuthRepository();
 
   bool isLoading = false;
 
- Future<bool> login({
-  required String email,
-  required String password,
-}) async {
+  Future<bool> login({required String email, required String password}) async {
+    try {
+      isLoading = true;
+      notifyListeners();
 
-  try {
+      final response = await _repository.login(
+        LoginRequest(email: email, password: password),
+      );
 
-    isLoading = true;
-    notifyListeners();
+      print(response.data);
 
-    final response =
-        await _repository.login(
-      LoginRequest(
-        email: email,
-        password: password,
-      ),
-    );
+      final token = response.data["token"];
 
-    print(response.data);
+      if (token == null) {
+        print("Token null");
+        return false;
+      }
 
-    final token =
-        response.data["token"];
+      await TokenStorage.saveToken(token);
 
-    if (token == null) {
-      print("Token null");
+      return true;
+    } catch (e) {
+      print(e);
+
       return false;
+    } finally {
+      isLoading = false;
+      notifyListeners();
     }
-
-    await TokenStorage.saveToken(
-      token,
-    );
-
-    return true;
-
-  } catch (e) {
-
-    print(e);
-
-    return false;
-
-  } finally {
-
-    isLoading = false;
-    notifyListeners();
   }
-}
 
   Future<bool> register({
-
     required String fullName,
     required String email,
     required String phone,
     required String password,
-
   }) async {
-
     try {
-
       isLoading = true;
       notifyListeners();
 
       await _repository.register(
-
         RegisterRequest(
           fullName: fullName,
           email: email,
@@ -85,13 +62,9 @@ class AuthController extends ChangeNotifier {
       );
 
       return true;
-
     } catch (e) {
-
       return false;
-
     } finally {
-
       isLoading = false;
       notifyListeners();
     }

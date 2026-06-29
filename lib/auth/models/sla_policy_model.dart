@@ -27,14 +27,10 @@ class SlaPolicy {
       name: json["name"] ?? "",
       priorityLevel: json["priorityLevel"] ?? "LOW",
       description: json["description"],
-      escalateEnabled:
-          json["escalateEnabled"] ?? false,
-      escalationMinutes:
-          json["escalationMinutes"] ?? 0,
-      responseMinutes:
-          json["responseMinutes"] ?? 0,
-      resolutionMinutes:
-          json["resolutionMinutes"] ?? 0,
+      escalateEnabled: json["escalateEnabled"] ?? false,
+      escalationMinutes: json["escalationMinutes"] ?? 0,
+      responseMinutes: json["responseMinutes"] ?? 0,
+      resolutionMinutes: json["resolutionMinutes"] ?? 0,
       isActive: json["isActive"] ?? true,
     );
   }

@@ -1,5 +1,4 @@
 class RegisterRequest {
-
   final String fullName;
   final String email;
   final String phone;

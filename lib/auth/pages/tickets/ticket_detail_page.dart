@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:help_desk_flutter/core/network/api_endpoints.dart';
 import 'package:help_desk_flutter/core/storage/token_storage.dart';

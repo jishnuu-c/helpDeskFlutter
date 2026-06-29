@@ -11,18 +11,14 @@ class Category {
     this.parentId,
   });
 
-  factory Category.fromJson(
-    Map<String, dynamic> json,
-  ) {
+  factory Category.fromJson(Map<String, dynamic> json) {
     return Category(
       categoryId: json['categoryId'],
       name: json['name'] ?? '',
       description: json['description'] ?? '',
-      parentId:
-          json['parentCategory'] == null
-              ? null
-              : json['parentCategory']
-                  ['categoryId'],
+      parentId: json['parentCategory'] == null
+          ? null
+          : json['parentCategory']['categoryId'],
     );
   }
 }

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../core/widgets/custom_button.dart';
 import '../../core/widgets/custom_text_field.dart';
 import '../../layout/main_layout_page.dart';
 import '../controller/auth_controller.dart';
 import 'register_page.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -26,8 +28,6 @@ class _LoginPageState extends State<LoginPage> {
     final success = await authController.login(
       email: emailController.text.trim(),
       password: passwordController.text.trim(),
-
-      
     );
 
     if (!mounted) return;
@@ -49,6 +49,14 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    Future<void> googleLogin() async {
+      final Uri url = Uri.parse(
+        'http://192.168.1.110:8080/oauth2/authorization/google',
+      );
+
+      await launchUrl(url, mode: LaunchMode.externalApplication);
+    }
+
     return Scaffold(
       backgroundColor: const Color(0xffF2F2F2),
 
@@ -156,13 +164,22 @@ class _LoginPageState extends State<LoginPage> {
 
                 SizedBox(
                   width: double.infinity,
-
                   height: 50,
-
                   child: OutlinedButton(
-                    onPressed: () {},
+                    onPressed: googleLogin,
 
-                    child: const Text("Continue with Google"),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset(
+                          'lib/assets/icons/google.svg',
+                          width: 24,
+                          height: 24,
+                        ),
+                        const SizedBox(width: 10),
+                        const Text("Continue with Google"),
+                      ],
+                    ),
                   ),
                 ),
 

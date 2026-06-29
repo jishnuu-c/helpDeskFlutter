@@ -4,8 +4,7 @@ import '../models/sla_policy_model.dart';
 import '../repository/sla_repository.dart';
 
 class SlaController extends ChangeNotifier {
-  final SlaRepository repository =
-      SlaRepository();
+  final SlaRepository repository = SlaRepository();
 
   bool loading = false;
 
@@ -16,21 +15,15 @@ class SlaController extends ChangeNotifier {
     notifyListeners();
 
     try {
-      slas =
-          await repository.getSlas();
+      slas = await repository.getSlas();
     } finally {
       loading = false;
       notifyListeners();
     }
   }
 
-  Future<void> createSla(
-    SlaPolicy sla,
-  ) async {
-    final created =
-        await repository.createSla(
-      sla,
-    );
+  Future<void> createSla(SlaPolicy sla) async {
+    final created = await repository.createSla(sla);
 
     slas.insert(0, created);
 
