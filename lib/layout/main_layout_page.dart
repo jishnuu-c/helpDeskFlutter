@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import '../features/dashboard/pages/dashboard_page.dart';
-import '../features/kb/pages/kb_page.dart';
-import '../features/auth/pages/login_page.dart';
-import '../features/sla/pages/sla_list_page.dart';
+import '../features/pages/dashboard/dashboard_page.dart';
+import '../features/pages/kb/kb_page.dart';
+import '../features/pages/auth/login_page.dart';
+import '../features/pages/sla/sla_list_page.dart';
 import '../core/storage/token_storage.dart';
 
-import '../features/categories/pages/category_list_page.dart';
-import '../features/departments/pages/department_list_page.dart';
-import '../features/tickets/pages/ticket_list_page.dart';
+import '../features/pages/category/category_list_page.dart';
+import '../features/pages/departments/department_list_page.dart';
+import '../features/pages/tickets/ticket_list_page.dart';
 
 class MainLayoutPage extends StatefulWidget {
   const MainLayoutPage({super.key});
@@ -237,37 +237,83 @@ class _MainLayoutPageState extends State<MainLayoutPage> {
                           badge: "3",
                         ),
 
-                        drawerItem(index: 3, icon: Icons.list, title: "My Queue"),
+                        drawerItem(
+                          index: 3,
+                          icon: Icons.list,
+                          title: "My Queue",
+                        ),
 
                         sectionTitle("MANAGE"),
 
-                        drawerItem(index: 4, icon: Icons.people, title: "Agents"),
+                        drawerItem(
+                          index: 4,
+                          icon: Icons.people,
+                          title: "Agents",
+                        ),
 
-                        drawerItem(index: 5, icon: Icons.support, title: "Tickets"),
+                        drawerItem(
+                          index: 5,
+                          icon: Icons.support,
+                          title: "Tickets",
+                        ),
 
-                        drawerItem(index: 6, icon: Icons.apartment, title: "Departments"),
+                        drawerItem(
+                          index: 6,
+                          icon: Icons.apartment,
+                          title: "Departments",
+                        ),
 
-                        drawerItem(index: 7, icon: Icons.timer, title: "SLA Policies"),
+                        drawerItem(
+                          index: 7,
+                          icon: Icons.timer,
+                          title: "SLA Policies",
+                        ),
 
-                        drawerItem(index: 8, icon: Icons.category, title: "Categories"),
+                        drawerItem(
+                          index: 8,
+                          icon: Icons.category,
+                          title: "Categories",
+                        ),
 
-                        drawerItem(index: 9, icon: Icons.menu_book, title: "Knowledge Base"),
+                        drawerItem(
+                          index: 9,
+                          icon: Icons.menu_book,
+                          title: "Knowledge Base",
+                        ),
 
-                        drawerItem(index: 10, icon: Icons.bar_chart, title: "Reports"),
+                        drawerItem(
+                          index: 10,
+                          icon: Icons.bar_chart,
+                          title: "Reports",
+                        ),
 
                         sectionTitle("SYSTEM"),
 
-                        drawerItem(index: 11, icon: Icons.settings, title: "Settings"),
+                        drawerItem(
+                          index: 11,
+                          icon: Icons.settings,
+                          title: "Settings",
+                        ),
 
                         // ← PROFILE — Settings thazhey
-                        drawerItem(index: 12, icon: Icons.person, title: "Profile"),
+                        drawerItem(
+                          index: 12,
+                          icon: Icons.person,
+                          title: "Profile",
+                        ),
 
                         // ← LOGOUT
                         ListTile(
-                          leading: const Icon(Icons.logout, color: Colors.redAccent),
+                          leading: const Icon(
+                            Icons.logout,
+                            color: Colors.redAccent,
+                          ),
                           title: const Text(
                             "Logout",
-                            style: TextStyle(color: Colors.redAccent, fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                              color: Colors.redAccent,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                           onTap: () {
                             Navigator.pop(context); // drawer close
